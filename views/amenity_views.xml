@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_event_amenity_form" model="ir.ui.view">
+        <field name="name">event.amenity.form</field>
+        <field name="model">event.amenity</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet style="background-color: #e8f5e8; border: 2px solid #049f5f; border-radius: 8px;">
+                    <group style="background-color: #e8f5e8; padding: 15px; border-radius: 8px; border: 2px solid #049f5f;">
+                        <field name="name" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                        <field name="type" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                        <field name="price" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                        <field name="description" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_event_amenity_list" model="ir.ui.view">
+        <field name="name">event.amenity.list</field>
+        <field name="model">event.amenity</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="price"/>
+            </list>
+        </field>
+    </record>
+</odoo>

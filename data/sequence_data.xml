@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default Booking Sequence -->
+        <record id="seq_event_booking_global" model="ir.sequence">
+            <field name="name">Event Booking</field>
+            <field name="code">event.booking</field>
+            <field name="prefix">BKG-</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+        </record>
+    </data>
+</odoo>

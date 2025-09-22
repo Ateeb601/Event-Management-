@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_event_type_form" model="ir.ui.view">
+        <field name="name">event.type.form</field>
+        <field name="model">event.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet style="background-color: #e8f5e8; border: 2px solid #049f5f; border-radius: 8px;">
+                    <group style="background-color: #e8f5e8; padding: 15px; border-radius: 8px; border: 2px solid #049f5f;">
+                        <field name="name" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                        <field name="code" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                    </group>
+                    <notebook>
+                        <page string="Categories" style="background-color: #e8f5e8; color: #049f5f; font-weight: bold;">
+                            <field name="category_ids" style="border: 2px solid #049f5f; border-radius: 4px;">
+                                <list>
+                                    <field name="name"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_event_type_list" model="ir.ui.view">
+        <field name="name">event.type.list</field>
+        <field name="model">event.type</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="code"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_event_category_form" model="ir.ui.view">
+        <field name="name">event.category.form</field>
+        <field name="model">event.category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet style="background-color: #e8f5e8; border: 2px solid #049f5f; border-radius: 8px;">
+                    <group style="background-color: #e8f5e8; padding: 15px; border-radius: 8px; border: 2px solid #049f5f;">
+                        <field name="name" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                        <field name="event_type_id" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_event_category_list" model="ir.ui.view">
+        <field name="name">event.category.list</field>
+        <field name="model">event.category</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="event_type_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_event_type" model="ir.actions.act_window">
+        <field name="name">Event Types</field>
+        <field name="res_model">event.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_event_category" model="ir.actions.act_window">
+        <field name="name">Event Categories</field>
+        <field name="res_model">event.category</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

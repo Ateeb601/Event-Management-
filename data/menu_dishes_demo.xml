@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Chicken Dishes -->
+        <record id="dish_chicken_biryani" model="menu.dishes">
+            <field name="name">Chicken Biryani</field>
+            <field name="description">Aromatic basmati rice with tender chicken pieces and spices</field>
+            <field name="price">22.99</field>
+            <field name="meal_type">lunch</field>
+            <field name="meat_type">chicken</field>
+            <field name="dish_category">rice</field>
+            <field name="is_spicy">True</field>
+            <field name="preparation_time">45</field>
+        </record>
+
+        <record id="dish_chicken_tikka" model="menu.dishes">
+            <field name="name">Chicken Tikka Masala</field>
+            <field name="description">Grilled chicken in creamy tomato curry sauce</field>
+            <field name="price">19.99</field>
+            <field name="meal_type">dinner</field>
+            <field name="meat_type">chicken</field>
+            <field name="dish_category">main_course</field>
+            <field name="preparation_time">30</field>
+        </record>
+
+        <!-- Mutton Dishes -->
+        <record id="dish_mutton_curry" model="menu.dishes">
+            <field name="name">Mutton Curry</field>
+            <field name="description">Slow-cooked mutton in rich spicy gravy</field>
+            <field name="price">26.99</field>
+            <field name="meal_type">dinner</field>
+            <field name="meat_type">mutton</field>
+            <field name="dish_category">main_course</field>
+            <field name="is_spicy">True</field>
+            <field name="preparation_time">60</field>
+        </record>
+
+        <record id="dish_mutton_biryani" model="menu.dishes">
+            <field name="name">Mutton Biryani</field>
+            <field name="description">Premium basmati rice with tender mutton and aromatic spices</field>
+            <field name="price">28.99</field>
+            <field name="meal_type">lunch</field>
+            <field name="meat_type">mutton</field>
+            <field name="dish_category">rice</field>
+            <field name="is_spicy">True</field>
+            <field name="preparation_time">50</field>
+        </record>
+
+        <!-- Beef Dishes -->
+        <record id="dish_beef_steak" model="menu.dishes">
+            <field name="name">Grilled Beef Steak</field>
+            <field name="description">Juicy grilled beef steak with herbs and garlic butter</field>
+            <field name="price">32.99</field>
+            <field name="meal_type">dinner</field>
+            <field name="meat_type">beef</field>
+            <field name="dish_category">main_course</field>
+            <field name="preparation_time">25</field>
+        </record>
+
+        <record id="dish_beef_kebab" model="menu.dishes">
+            <field name="name">Beef Seekh Kebab</field>
+            <field name="description">Spiced minced beef grilled on skewers</field>
+            <field name="price">18.99</field>
+            <field name="meal_type">lunch</field>
+            <field name="meat_type">beef</field>
+            <field name="dish_category">starter</field>
+            <field name="is_spicy">True</field>
+            <field name="preparation_time">20</field>
+        </record>
+
+        <!-- Vegetarian Dishes -->
+        <record id="dish_veg_biryani" model="menu.dishes">
+            <field name="name">Vegetable Biryani</field>
+            <field name="description">Fragrant basmati rice with mixed vegetables and spices</field>
+            <field name="price">16.99</field>
+            <field name="meal_type">lunch</field>
+            <field name="meat_type">vegetarian</field>
+            <field name="dish_category">rice</field>
+            <field name="is_vegetarian">True</field>
+            <field name="preparation_time">35</field>
+        </record>
+
+        <record id="dish_paneer_tikka" model="menu.dishes">
+            <field name="name">Paneer Tikka Masala</field>
+            <field name="description">Grilled cottage cheese in creamy tomato curry</field>
+            <field name="price">17.99</field>
+            <field name="meal_type">dinner</field>
+            <field name="meat_type">vegetarian</field>
+            <field name="dish_category">main_course</field>
+            <field name="is_vegetarian">True</field>
+            <field name="preparation_time">25</field>
+        </record>
+
+        <!-- Fish Dishes -->
+        <record id="dish_fish_curry" model="menu.dishes">
+            <field name="name">Fish Curry</field>
+            <field name="description">Fresh fish cooked in coconut curry sauce</field>
+            <field name="price">21.99</field>
+            <field name="meal_type">lunch</field>
+            <field name="meat_type">fish</field>
+            <field name="dish_category">main_course</field>
+            <field name="is_spicy">True</field>
+            <field name="preparation_time">30</field>
+        </record>
+
+        <!-- Beverages -->
+        <record id="dish_mango_lassi" model="menu.dishes">
+            <field name="name">Mango Lassi</field>
+            <field name="description">Refreshing yogurt drink with mango pulp</field>
+            <field name="price">5.99</field>
+            <field name="meal_type">beverages</field>
+            <field name="meat_type">vegetarian</field>
+            <field name="is_vegetarian">True</field>
+            <field name="preparation_time">5</field>
+        </record>
+
+        <!-- Desserts -->
+        <record id="dish_gulab_jamun" model="menu.dishes">
+            <field name="name">Gulab Jamun</field>
+            <field name="description">Sweet milk dumplings in sugar syrup</field>
+            <field name="price">7.99</field>
+            <field name="meal_type">dinner</field>
+            <field name="meat_type">vegetarian</field>
+            <field name="dish_category">dessert</field>
+            <field name="is_vegetarian">True</field>
+            <field name="preparation_time">10</field>
+        </record>
+    </data>
+</odoo>

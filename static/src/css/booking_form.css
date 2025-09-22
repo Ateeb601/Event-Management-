@@ -1,0 +1,200 @@
+.event-booking-form {
+    background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(4, 159, 95, 0.1);
+}
+
+.booking-header {
+    background: linear-gradient(135deg, #049f5f 0%, #037a4a 100%);
+    color: white;
+    padding: 20px;
+    margin: -24px -24px 20px -24px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 2px 10px rgba(4, 159, 95, 0.3);
+}
+
+.booking-field {
+    border: 2px solid #049f5f !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.booking-field:focus {
+    border-color: #037a4a !important;
+    box-shadow: 0 0 0 3px rgba(4, 159, 95, 0.1) !important;
+    transform: translateY(-1px);
+}
+
+.meat-type-buttons .btn {
+    background: linear-gradient(135deg, #875A7B 0%, #6d4862 100%);
+    border: none;
+    color: white;
+    margin: 0 5px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.meat-type-buttons .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(135, 90, 123, 0.3);
+}
+
+.meat-type-buttons .btn.active {
+    background: linear-gradient(135deg, #049f5f 0%, #037a4a 100%);
+    box-shadow: 0 4px 15px rgba(4, 159, 95, 0.4);
+}
+
+.meal-package-card {
+    border: 3px solid #049f5f;
+    background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.meal-package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(4, 159, 95, 0.2);
+    border-color: #037a4a;
+}
+
+.meal-package-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+
+.meal-package-card:hover::before {
+    left: 100%;
+}
+
+.dish-card {
+    border: 3px solid #049f5f;
+    background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dish-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(4, 159, 95, 0.2);
+}
+
+.dish-remove-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #dc3545;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.dish-remove-btn:hover {
+    background: #c82333;
+    transform: scale(1.1);
+}
+
+.booking-section {
+    background: rgba(232, 245, 232, 0.5);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #049f5f;
+    margin-bottom: 20px;
+}
+
+.status-bar {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.btn-confirm {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-confirm:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
+}
+
+.btn-cancel {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108, 117, 125, 0.3);
+}
+
+.price-display {
+    background: linear-gradient(135deg, #875A7B 0%, #6d4862 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.amenity-section {
+    background: rgba(232, 245, 232, 0.3);
+    border: 2px dashed #049f5f;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.booking-field:focus {
+    animation: pulse 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .meal-package-card, .dish-card {
+        width: 100% !important;
+        margin: 10px 0;
+    }
+    
+    .meat-type-buttons .btn {
+        margin: 5px 0;
+        width: 100%;
+    }
+}

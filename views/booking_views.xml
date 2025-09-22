@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ================= FORM VIEW ================= -->
+    <record id="view_event_booking_form" model="ir.ui.view">
+        <field name="name">event.booking.form</field>
+        <field name="model">event.booking</field>
+        <field name="arch" type="xml">
+            <form string="Event Booking">
+                <header>
+
+                    <!-- Confirm Booking button -->
+                    <button name="action_confirm" type="object" string="Confirm Booking"
+                            class="btn btn-primary"
+                            invisible="status != 'draft'"/>
+
+                    <!-- Cancel Booking button -->
+                    <button name="action_cancel" type="object" string="Cancel Booking"
+                            class="btn btn-secondary"
+                            confirm="Are you sure you want to cancel this booking?"
+                            invisible="status != 'confirmed'"/>
+
+                    <!-- Print Report button -->
+                    <button name="%(action_report_booking_full)d" type="action" string="Print Report"/>
+
+
+                    <field name="status" widget="statusbar"/>
+                </header>
+
+                <sheet>
+                    <div style="background-color: #049f5f; color: white; padding: 15px; margin: -24px -24px 20px -24px; text-align: center; font-size: 18px; font-weight: bold;">
+                        Event Booking Form
+                    </div>
+                    <group style="background-color: #e8f5e8; padding: 15px; border-radius: 8px; border: 2px solid #049f5f;">
+                        <group>
+                            <field name="name" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                            <field name="phone" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                            <label for="event_type_id" string="Event Type" style="color: #049f5f; font-weight: bold;"/>
+                            <div class="o_row">
+                                <field name="event_type_id" nolabel="1" class="o_field_widget" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                                <field name="event_category_id" nolabel="1"
+                                       domain="[('event_type_id', '=', event_type_id)]"
+                                       placeholder="Select Category"
+                                       class="o_field_widget" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="hall_id" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                            <field name="booking_date" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                            <label for="start_time" string="Timing" style="color: #049f5f; font-weight: bold;"/>
+                            <div class="o_row">
+                                <field name="start_time" nolabel="1" placeholder="Start Time" class="o_field_widget" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                                <field name="end_time" nolabel="1" placeholder="End Time" class="o_field_widget" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                            </div>
+                            <field name="total_person" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Menu Selection" style="background-color: #e8f5e8; color: #049f5f; font-weight: bold;">
+                            <div style="margin-bottom: 20px;">
+                                <h4 style="color: #875A7B; margin-bottom: 15px;">Meat Type Preference</h4>
+                                <div class="btn-group" role="group">
+                                    <button name="action_set_chicken" type="object" string="Chicken"
+                                            class="btn btn-outline-primary"
+                                            style="background-color: #875A7B; color: white;"/>
+                                    <button name="action_set_mutton" type="object" string="Mutton"
+                                            class="btn btn-outline-primary"
+                                            style="background-color: #875A7B; color: white;"/>
+                                    <button name="action_set_beef" type="object" string="Beef"
+                                            class="btn btn-outline-primary"
+                                            style="background-color: #875A7B; color: white;"/>
+                                </div>
+                                <field name="meat_type_filter" invisible="1"/>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button name="action_open_meal_packages" type="object"
+                                            string="Select Meal Package" class="btn btn-success mb-3"/>
+                                </div>
+                            </div>
+                            <!--                            <div invisible="not selected_meal_package" style="margin-bottom: 20px;">-->
+                            <!--                                <h4 style="color: #875A7B; margin-bottom: 15px;">Selected Meal Package</h4>-->
+                            <!--                                <field name="selected_meal_package" mode="kanban" nolabel="1" readonly="1">-->
+                            <!--                                    <kanban>-->
+                            <!--                                        <field name="name"/>-->
+                            <!--                                        <field name="event_category_id"/>-->
+                            <!--                                        <field name="meat_type"/>-->
+                            <!--                                        <field name="total_meal_price"/>-->
+                            <!--                                        <field name="meat_dishes"/>-->
+                            <!--                                        <field name="rice_dish_ids"/>-->
+                            <!--                                        <field name="dessert_ids"/>-->
+                            <!--                                        <field name="salad_ids"/>-->
+                            <!--                                        <field name="drink_ids"/>-->
+                            <!--                                        <field name="bread_ids"/>-->
+                            <!--                                        <field name="description"/>-->
+                            <!--                                        <templates>-->
+                            <!--                                            <t t-name="card">-->
+                            <!--                                                <div class="oe_kanban_card" style="width: 100%; margin: 0; border: 2px solid #875A7B; border-radius: 8px;">-->
+                            <!--                                                    <div class="oe_kanban_details" style="padding: 15px;">-->
+                            <!--                                                        <div class="o_kanban_record_top">-->
+                            <!--                                                            <div class="o_kanban_record_headings">-->
+                            <!--                                                                <strong style="font-size: 16px; color: #875A7B;">-->
+                            <!--                                                                    <field name="name"/>-->
+                            <!--                                                                </strong>-->
+                            <!--                                                                <div style="margin-top: 5px;">-->
+                            <!--                                                                    <span class="badge badge-pill badge-primary">-->
+                            <!--                                                                        <field name="event_category_id"/>-->
+                            <!--                                                                    </span>-->
+                            <!--                                                                    <t t-if="record.meat_type.raw_value">-->
+                            <!--                                                                        <span class="badge badge-pill badge-secondary ml-1">-->
+                            <!--                                                                            <field name="meat_type"/>-->
+                            <!--                                                                        </span>-->
+                            <!--                                                                    </t>-->
+                            <!--                                                                    <span style="float: right; font-size: 16px; color: #875A7B; font-weight: bold;">-->
+                            <!--                                                                        ₹<field name="total_meal_price"/> per person-->
+                            <!--                                                                    </span>-->
+                            <!--                                                                </div>-->
+                            <!--                                                            </div>-->
+                            <!--                                                        </div>-->
+                            <!--                                                        -->
+                            <!--                                                        <div class="o_kanban_record_body" style="margin: 10px 0;">-->
+                            <!--                                                            <div style="background-color: #f8f9fa; padding: 10px; border-radius: 5px;">-->
+                            <!--                                                                <strong style="color: #875A7B;">Package Includes:</strong>-->
+                            <!--                                                                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px;">-->
+                            <!--                                                                    <t t-if="record.meat_dishes.raw_value">-->
+                            <!--                                                                        <div style="background: #fff; padding: 5px 10px; border-radius: 15px; border: 1px solid #ddd;">-->
+                            <!--                                                                            🍖 <field name="meat_dishes"/>-->
+                            <!--                                                                        </div>-->
+                            <!--                                                                    </t>-->
+                            <!--                                                                    <t t-if="record.rice_dish_ids.raw_value">-->
+                            <!--                                                                        <div style="background: #fff; padding: 5px 10px; border-radius: 15px; border: 1px solid #ddd;">-->
+                            <!--                                                                            🍚 <field name="rice_dish_ids"/>-->
+                            <!--                                                                        </div>-->
+                            <!--                                                                    </t>-->
+                            <!--                                                                    <t t-if="record.dessert_ids.raw_value">-->
+                            <!--                                                                        <div style="background: #fff; padding: 5px 10px; border-radius: 15px; border: 1px solid #ddd;">-->
+                            <!--                                                                            🍰 <field name="dessert_ids"/>-->
+                            <!--                                                                        </div>-->
+                            <!--                                                                    </t>-->
+                            <!--                                                                    <t t-if="record.salad_ids.raw_value">-->
+                            <!--                                                                        <div style="background: #fff; padding: 5px 10px; border-radius: 15px; border: 1px solid #ddd;">-->
+                            <!--                                                                            🥗 <field name="salad_ids"/>-->
+                            <!--                                                                        </div>-->
+                            <!--                                                                    </t>-->
+                            <!--                                                                    <t t-if="record.drink_ids.raw_value">-->
+                            <!--                                                                        <div style="background: #fff; padding: 5px 10px; border-radius: 15px; border: 1px solid #ddd;">-->
+                            <!--                                                                            🥤 <field name="drink_ids"/>-->
+                            <!--                                                                        </div>-->
+                            <!--                                                                    </t>-->
+                            <!--                                                                    <t t-if="record.bread_ids.raw_value">-->
+                            <!--                                                                        <div style="background: #fff; padding: 5px 10px; border-radius: 15px; border: 1px solid #ddd;">-->
+                            <!--                                                                            🍞 <field name="bread_ids"/>-->
+                            <!--                                                                        </div>-->
+                            <!--                                                                    </t>-->
+                            <!--                                                                </div>-->
+                            <!--                                                            </div>-->
+                            <!--                                                        </div>-->
+                            <!--                                                    </div>-->
+                            <!--                                                </div>-->
+                            <!--                                            </t>-->
+                            <!--                                        </templates>-->
+                            <!--                                    </kanban>-->
+                            <!--                                </field>-->
+                            <!--                            </div>-->
+
+                            <!-- Available Meal Packages -->
+                            <div invisible="not meat_type_filter" style="margin-top: 20px;">
+                                <h4 style="color: #875A7B; margin-bottom: 15px;">Available Meal Packages</h4>
+                                <field name="available_meal_packages" mode="kanban" nolabel="1">
+                                    <kanban>
+                                        <field name="name"/>
+                                        <field name="meat_type"/>
+                                        <field name="total_meal_price"/>
+                                        <field name="meat_dishes"/>
+                                        <field name="rice_dish_ids"/>
+                                        <field name="dessert_ids"/>
+                                        <field name="salad_ids"/>
+                                        <field name="drink_ids"/>
+                                        <field name="bread_ids"/>
+                                        <templates>
+                                            <t t-name="card">
+                                                <div class="oe_kanban_card"
+                                                     style="width: 300px; margin: 5px; cursor: pointer; border: 3px solid #049f5f; background-color: #e8f5e8; position: relative; border-radius: 8px;">
+
+                                                    <div style="padding: 15px;">
+                                                        <strong style="font-size: 14px; color: #875A7B;">
+                                                            <field name="name"/>
+                                                        </strong>
+                                                        <br/>
+                                                        <span class="badge badge-secondary">
+                                                            <field name="meat_type"/>
+                                                        </span>
+                                                        <span style="float: right; color: #875A7B; font-weight: bold;">RS.
+                                                            <field name="total_meal_price"/>
+                                                        </span>
+                                                        <br/>
+                                                        <div style="margin-top: 10px; font-size: 12px;">
+                                                            <t t-if="record.meat_dishes.raw_value">
+                                                                <div>🍖
+                                                                    <field name="meat_dishes"/>
+                                                                </div>
+                                                            </t>
+                                                            <t t-if="record.rice_dish_ids.raw_value">
+                                                                <div>🍚
+                                                                    <field name="rice_dish_ids"/>
+                                                                </div>
+                                                            </t>
+                                                            <t t-if="record.dessert_ids.raw_value">
+                                                                <div>🍰
+                                                                    <field name="dessert_ids"/>
+                                                                </div>
+                                                            </t>
+                                                            <t t-if="record.salad_ids.raw_value">
+                                                                <div>🥗
+                                                                    <field name="salad_ids"/>
+                                                                </div>
+                                                            </t>
+                                                            <t t-if="record.drink_ids.raw_value">
+                                                                <div>🥤
+                                                                    <field name="drink_ids"/>
+                                                                </div>
+                                                            </t>
+                                                            <t t-if="record.bread_ids.raw_value">
+                                                                <div>🍞
+                                                                    <field name="bread_ids"/>
+                                                                </div>
+                                                            </t>
+                                                        </div>
+                                                        <div style="margin-top: 10px; display: flex; gap: 5px;">
+                                                            <button name="action_select_meal_package" type="object"
+                                                                    class="btn btn-sm btn-success"
+                                                                    style="flex: 1;">
+                                                                Select
+                                                            </button>
+                                                            <button name="action_edit_meal" type="object"
+                                                                    class="btn btn-sm btn-primary"
+                                                                    style="flex: 1;">
+                                                                Edit
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </templates>
+                                    </kanban>
+                                </field>
+                            </div>
+
+<!--                            &lt;!&ndash; Selected Meal Packages &ndash;&gt;-->
+<!--                            <div invisible="not selected_meal_packages" style="margin-top: 20px;">-->
+<!--                                <h4 style="color: #875A7B; margin-bottom: 15px;">Selected Meal Packages</h4>-->
+<!--                                <field name="selected_meal_packages" mode="kanban" nolabel="1">-->
+<!--                                    <kanban>-->
+<!--                                        <field name="name"/>-->
+<!--                                        <field name="meat_type"/>-->
+<!--                                        <field name="total_meal_price"/>-->
+<!--                                        <templates>-->
+<!--                                            <t t-name="card">-->
+<!--                                                <div class="oe_kanban_card" style="width: 250px; margin: 5px; position: relative; border: 2px solid #875A7B;">-->
+<!--                                                    <button type="object" name="action_remove_selected_meal" -->
+<!--                                                            class="btn btn-sm btn-danger" -->
+<!--                                                            style="position: absolute; top: 5px; right: 5px; padding: 2px 6px;"-->
+<!--                                                            title="Remove Package">-->
+<!--                                                        ×-->
+<!--                                                    </button>-->
+<!--                                                    <div style="padding: 15px;">-->
+<!--                                                        <strong style="color: #875A7B;"><field name="name"/></strong><br/>-->
+<!--                                                        <span class="badge badge-secondary"><field name="meat_type"/></span><br/>-->
+<!--                                                        <small style="color: #875A7B; font-weight: bold;">₹<field name="total_meal_price"/> per person</small>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </t>-->
+<!--                                        </templates>-->
+<!--                                    </kanban>-->
+<!--                                </field>-->
+<!--                            </div>-->
+
+<!--                            <field name="selected_dishes" mode="kanban" nolabel="1">-->
+<!--                                <kanban>-->
+<!--                                    <field name="name"/>-->
+<!--                                    <field name="meal_type"/>-->
+<!--                                    <field name="image"/>-->
+<!--                                    <field name="price"/>-->
+<!--                                    <templates>-->
+<!--                                        <t t-name="card">-->
+<!--                                            <div class="oe_kanban_card"-->
+<!--                                                 style="width: 100px; margin: 5px; position: relative; border: 3px solid #049f5f; background-color: #e8f5e8; border-radius: 8px;">-->
+<!--                                                <div class="o_kanban_image">-->
+<!--                                                    <field name="image" widget="image" options="{'size': [120, 120]}"-->
+<!--                                                           style="width: 100%; height: 120px; object-fit: cover;"/>-->
+<!--                                                    <button type="object" name="action_remove_dish"-->
+<!--                                                            class="btn btn-sm btn-danger"-->
+<!--                                                            style="position: absolute; top: 5px; right: 5px; padding: 2px 6px;"-->
+<!--                                                            title="Remove Dish">-->
+<!--                                                        ×-->
+<!--                                                    </button>-->
+<!--                                                </div>-->
+<!--                                                <div style="padding: 10px;">-->
+<!--                                                    <strong>-->
+<!--                                                        <field name="name"/>-->
+<!--                                                    </strong>-->
+<!--                                                    <br/>-->
+<!--                                                    <span class="badge badge-info">-->
+<!--                                                        <field name="meal_type"/>-->
+<!--                                                    </span>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </t>-->
+<!--                                    </templates>-->
+<!--                                </kanban>-->
+<!--                            </field>-->
+                            <group>
+                                <field name="dishes_per_person" readonly="1" string="Dishes Per Person (Rs.)"/>
+                                <field name="total_meal_price" readonly="1" string="Total Meal Price (Rs.)"/>
+                                <field name="total_dishes_cost" readonly="1" string="Total Dishes Cost (Rs.)"/>
+                                <field name="grand_total" readonly="1" string="Grand Total (Rs.)"/>
+                            </group>
+                        </page>
+                        <page string="Amenities" style="background-color: #e8f5e8; color: #049f5f; font-weight: bold;">
+                            <field name="amenities" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                            <group style="background-color: #e8f5e8; padding: 10px; border-radius: 8px; border: 2px solid #049f5f;">
+                                <field name="amenities_total" readonly="1" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ================= LIST VIEW ================= -->
+    <record id="view_event_booking_list" model="ir.ui.view">
+        <field name="name">event.booking.list</field>
+        <field name="model">event.booking</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="event_type_id"/>
+                <field name="event_category_id"/>
+                <field name="hall_id"/>
+                <field name="booking_date"/>
+                <field name="grand_total"/>
+                <field name="status"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ================= ACTION ================= -->
+    <record id="action_event_booking" model="ir.actions.act_window">
+        <field name="name">Event Bookings</field>
+        <field name="res_model">event.booking</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="event_management.MealSelectionWidget" owl="1">
+        <div class="meal-selection-widget">
+            <div class="meal-filter-buttons mb-3">
+                <button class="btn btn-sm btn-outline-primary me-2" 
+                        t-on-click="() => this.filterByMeatType('all')">All</button>
+                <button class="btn btn-sm btn-outline-primary me-2" 
+                        t-on-click="() => this.filterByMeatType('chicken')">Chicken</button>
+                <button class="btn btn-sm btn-outline-primary me-2" 
+                        t-on-click="() => this.filterByMeatType('beef')">Beef</button>
+                <button class="btn btn-sm btn-outline-primary" 
+                        t-on-click="() => this.filterByMeatType('vegetarian')">Vegetarian</button>
+            </div>
+            <div class="meal-packages">
+                <t t-if="props.record and props.record.data.available_meal_packages">
+                    <t t-foreach="props.record.data.available_meal_packages" t-as="meal" t-key="meal.id">
+                        <div class="meal-package-card card mb-2">
+                            <div class="card-body">
+                                <h6 class="card-title" t-esc="meal.name"/>
+                                <p class="card-text" t-esc="meal.description"/>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price">$<t t-esc="meal.total_meal_price"/></span>
+                                    <button class="btn btn-sm btn-primary" 
+                                            t-on-click="() => this.selectMealPackage(meal.id)">
+                                        Add Package
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </div>
+            <div class="selected-meals mt-3">
+                <h6>Selected Meals:</h6>
+                <t t-if="props.record and props.record.data.selected_meal_packages">
+                    <t t-foreach="props.record.data.selected_meal_packages" t-as="selectedMeal" t-key="selectedMeal.id">
+                        <div class="selected-meal-item d-flex justify-content-between align-items-center mb-1">
+                            <span t-esc="selectedMeal.name"/>
+                            <button class="btn btn-sm btn-outline-danger" 
+                                    t-on-click="() => this.removeMealPackage(selectedMeal.id)">
+                                Remove
+                            </button>
+                        </div>
+                    </t>
+                </t>
+            </div>
+            <div class="total-cost mt-3">
+                <strong>Total Cost: $<t t-esc="calculateTotalCost()"/></strong>
+            </div>
+        </div>
+    </t>
+</templates>

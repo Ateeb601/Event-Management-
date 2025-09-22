@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Demo Menu Meal Packages -->
+        <record id="meal_basic_package" model="menu.meal">
+            <field name="name">Basic Meal Package</field>
+            <field name="meat_type">chicken</field>
+            <field name="total_meal_price">25.00</field>
+            <field name="description">Basic meal package with chicken dishes</field>
+        </record>
+
+        <record id="meal_premium_package" model="menu.meal">
+            <field name="name">Premium Meal Package</field>
+            <field name="meat_type">mutton</field>
+            <field name="total_meal_price">35.00</field>
+            <field name="description">Premium meal package with mutton dishes</field>
+        </record>
+    </data>
+</odoo>
