@@ -8,13 +8,13 @@
 <!--              action="action_event_booking_enhanced" sequence="10"/>-->
 
     <!-- Configuration Menu -->
-    <menuitem id="menu_event_config" name="Configuration" parent="menu_event_management_root" sequence="20"/>
+    <menuitem id="menu_event_config" name="Configuration" parent="menu_event_management_root" sequence="40"/>
     
     <!-- Halls -->
     <record id="action_halls" model="ir.actions.act_window">
         <field name="name">Halls</field>
         <field name="res_model">event.hall</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">kanban,list,form</field>
     </record>
     
     <menuitem id="menu_halls" name="Halls" parent="menu_event_config" 
@@ -38,18 +38,6 @@
     <menuitem id="menu_amenities" name="Amenities" parent="menu_event_config" 
               action="action_amenities" sequence="40"/>
 
-    <!-- Menu Management -->
-    <menuitem id="menu_food_management" name="Menu Management" parent="menu_event_management_root" sequence="30"/>
-    
-    <!-- Dish Categories -->
-<!--    <record id="action_dish_categories" model="ir.actions.act_window">-->
-<!--        <field name="name">Dish Categories</field>-->
-<!--        <field name="res_model">dish.category</field>-->
-<!--        <field name="view_mode">list,form</field>-->
-<!--    </record>-->
-<!--    -->
-<!--    <menuitem id="menu_dish_categories" name="Dish Categories" parent="menu_food_management" -->
-<!--              action="action_dish_categories" sequence="10"/>-->
 
     <!-- Menu Dishes -->
     <record id="action_menu_dishes" model="ir.actions.act_window">
@@ -57,18 +45,5 @@
         <field name="res_model">menu.dishes</field>
         <field name="view_mode">kanban,form</field>
     </record>
-
-    <menuitem id="menu_menu_dishes" name="Menu Dishes" parent="menu_food_management"
-              action="action_menu_dishes" sequence="20"/>
-
-    <!-- Meal Packages -->
-<!--    <record id="action_menu_meals" model="ir.actions.act_window">-->
-<!--        <field name="name">Meal Packages</field>-->
-<!--        <field name="res_model">menu.meal</field>-->
-<!--        <field name="view_mode">list,form</field>-->
-<!--    </record>-->
-
-<!--    <menuitem id="menu_menu_meals" name="Meal Packages" parent="menu_food_management"-->
-<!--              action="action_menu_meals" sequence="30"/>-->
 
 </odoo>

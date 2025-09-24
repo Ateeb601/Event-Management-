@@ -5,6 +5,7 @@ class EventHall(models.Model):
     _description = 'Event Hall'
 
     name = fields.Char('Hall Name', required=True)
+    image = fields.Binary('Image')
     capacity = fields.Integer('Capacity')
     chairs = fields.Integer('Number of Chairs')
     tables = fields.Integer('Number of Tables')
