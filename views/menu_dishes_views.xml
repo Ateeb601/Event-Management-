@@ -119,7 +119,7 @@
                                 <div class="o_kanban_record_bottom">
                                     <div class="oe_kanban_bottom_left">
                                         <strong style="font-size: 18px; color: #875A7B;">
-                                            $<field name="price"/>
+                                            Rs.<field name="price"/>
                                         </strong>
                                     </div>
                                     <div class="oe_kanban_bottom_right">

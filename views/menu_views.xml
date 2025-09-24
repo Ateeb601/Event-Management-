@@ -32,7 +32,7 @@
     <record id="action_amenities" model="ir.actions.act_window">
         <field name="name">Amenities</field>
         <field name="res_model">event.amenity</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">kanban,list,form</field>
     </record>
     
     <menuitem id="menu_amenities" name="Amenities" parent="menu_event_config" 

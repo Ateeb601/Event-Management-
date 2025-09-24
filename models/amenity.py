@@ -7,4 +7,5 @@ class EventAmenity(models.Model):
     name = fields.Char('Name', required=True)
     type = fields.Char('Type', required=True)
     price = fields.Float('Price')
+    image = fields.Binary('Image')
     description = fields.Text('Description')

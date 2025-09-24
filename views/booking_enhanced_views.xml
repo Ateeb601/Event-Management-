@@ -91,12 +91,12 @@
                                 <field name="meat_type_filter" invisible="1"/>
                             </div>
 
-<!--                            <div class="row">-->
-<!--                                <div class="col-md-6">-->
-<!--                                    <button name="action_open_meal_packages" type="object"-->
-<!--                                            string="📦 Select Meal Package" class="btn btn-success mb-3"/>-->
-<!--                                </div>-->
-<!--                            </div>-->
+                            <!--                            <div class="row">-->
+                            <!--                                <div class="col-md-6">-->
+                            <!--                                    <button name="action_open_meal_packages" type="object"-->
+                            <!--                                            string="📦 Select Meal Package" class="btn btn-success mb-3"/>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
 
                             <!-- Available Meal Packages -->
                             <div invisible="not meat_type_filter" style="margin-top: 20px;">
@@ -247,13 +247,13 @@
                                                         </t>
                                                     </div>
 
-<!--                                                    <div style="margin-top: 15px;">-->
-<!--                                                        <button type="action"-->
-<!--                                                                name="%(event_management.action_remove_meal_package)d"-->
-<!--                                                                string="✗ Remove Package"-->
-<!--                                                                context="{'default_meal_id': id}"-->
-<!--                                                                class="btn btn-sm btn-danger" style="width: 100%;"/>-->
-<!--                                                    </div>-->
+                                                    <!--                                                    <div style="margin-top: 15px;">-->
+                                                    <!--                                                        <button type="action"-->
+                                                    <!--                                                                name="%(event_management.action_remove_meal_package)d"-->
+                                                    <!--                                                                string="✗ Remove Package"-->
+                                                    <!--                                                                context="{'default_meal_id': id}"-->
+                                                    <!--                                                                class="btn btn-sm btn-danger" style="width: 100%;"/>-->
+                                                    <!--                                                    </div>-->
                                                 </div>
                                             </t>
                                         </templates>
@@ -269,7 +269,7 @@
                                         <field name="name"/>
                                         <field name="meal_type"/>
                                         <field name="image"/>
-<!--                                        <field name="price"/>-->
+                                        <!--                                        <field name="price"/>-->
                                         <templates>
                                             <t t-name="card">
                                                 <div class="dish-card"
@@ -290,10 +290,10 @@
                                                         <span class="badge badge-info" style="margin-top: 5px;">
                                                             <field name="meal_type"/>
                                                         </span>
-<!--                                                        <div style="margin-top: 8px; color: #875A7B; font-weight: bold;">-->
-<!--                                                            Rs.-->
-<!--&lt;!&ndash;                                                            <field name="price"/>&ndash;&gt;-->
-<!--                                                        </div>-->
+                                                        <!--                                                        <div style="margin-top: 8px; color: #875A7B; font-weight: bold;">-->
+                                                        <!--                                                            Rs.-->
+                                                        <!--&lt;!&ndash;                                                            <field name="price"/>&ndash;&gt;-->
+                                                        <!--                                                        </div>-->
                                                     </div>
                                                 </div>
                                             </t>
@@ -321,12 +321,47 @@
                         </page>
 
                         <page string="🎪 Amenities">
-                            <div class="amenity-section">
-                                <field name="amenities"/>
-                                <div class="price-display" style="margin-top: 15px;">
-                                    Total Amenities Cost: Rs.
-                                    <field name="amenities_total" readonly="1"/>
-                                </div>
+                            <div style="margin-top: 20px;">
+                                <h4 style="color: #875A7B; margin-bottom: 15px;">📋 Available Amenities</h4>
+                                <field name="amenities" mode="kanban" nolabel="1">
+                                    <kanban>
+                                        <field name="id"/>
+                                        <field name="name"/>
+                                        <field name="type"/>
+                                        <field name="price"/>
+                                        <field name="image"/>
+                                        <templates>
+                                            <t t-name="kanban-box">
+                                                <div class="oe_kanban_card"
+                                                     style="width: 300px; margin: 5px; cursor: pointer; border: 3px solid #049f5f; background-color: #e8f5e8; position: relative; border-radius: 8px;">
+
+                                                    <div class="o_kanban_image">
+                                                        <img t-att-src="kanban_image('event.amenity', 'image', record.id.raw_value)" alt="Amenity"/>
+                                                    </div>
+                                                    <div class="oe_kanban_details o_kanban_record_headings"
+                                                         style="padding: 15px;">
+                                                        <strong class="o_kanban_record_title">
+                                                            <field name="name"/>
+                                                        </strong>
+                                                        <div class="o_kanban_record_subtitle">
+                                                            <field name="type"/>
+                                                        </div>
+                                                        <div class="oe_kanban_bottom_right">
+                                                            <strong>Rs.
+                                                                <field name="price"/>
+                                                            </strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </templates>
+                                    </kanban>
+                                </field>
+                            </div>
+
+                            <div class="price-display" style="margin-top: 15px;">
+                                Total Amenities Cost: Rs.
+                                <field name="amenities_total" readonly="1"/>
                             </div>
                         </page>
                     </notebook>
