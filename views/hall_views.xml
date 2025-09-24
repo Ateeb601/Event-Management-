@@ -24,7 +24,7 @@
     </record>
 
 
-    <record id="view_event_amenity_kanban" model="ir.ui.view">
+    <record id="view_event_hall_kanban" model="ir.ui.view">
         <field name="name">event.hall.kanban</field>
         <field name="model">event.hall</field>
         <field name="arch" type="xml">

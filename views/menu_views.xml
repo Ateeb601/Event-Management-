@@ -34,8 +34,8 @@
         <field name="res_model">event.amenity</field>
         <field name="view_mode">kanban,list,form</field>
     </record>
-    
-    <menuitem id="menu_amenities" name="Amenities" parent="menu_event_config" 
+
+    <menuitem id="menu_amenities" name="Amenities" parent="menu_event_config"
               action="action_amenities" sequence="40"/>
 
 
