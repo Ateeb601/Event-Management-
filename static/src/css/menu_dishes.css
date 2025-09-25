@@ -1,0 +1,52 @@
+/* Menu Dishes Form Styles */
+.dishes-form-sheet {
+    background-color: #e8f5e8;
+    border: 2px solid #049f5f;
+    border-radius: 8px;
+}
+
+.dishes-form-group {
+    background-color: #e8f5e8;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #049f5f;
+}
+
+.dishes-form-field {
+    border: 2px solid #049f5f;
+    border-radius: 4px;
+}
+
+.dishes-notebook-page {
+    background-color: #e8f5e8;
+    color: #049f5f;
+    font-weight: bold;
+}
+
+/* Menu Dishes Kanban Styles */
+.dishes-kanban-card {
+    width: 300px;
+    margin: 10px;
+     cursor: pointer;
+    box-shadow: 2.5px 5px #888888;
+    background-color: #e8f5e8;
+    border-radius: 8px;
+}
+.dishes-kanban-card{
+    width: 330px;   /* card width */
+    height: auto;   /* auto or fixed height */
+}
+.dishes-kanban-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.dishes-kanban-details {
+    padding: 15px;
+}
+
+.dishes-kanban-price {
+    font-size: 18px;
+    color: #875A7B;
+}

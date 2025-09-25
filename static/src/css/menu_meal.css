@@ -1,0 +1,70 @@
+/* Menu Meal Form Styles */
+.meal-form-sheet {
+    background-color: #e8f5e8;
+    border: 2px solid #049f5f;
+    border-radius: 8px;
+}
+
+.meal-form-group {
+    background-color: #e8f5e8;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #049f5f;
+}
+
+.meal-form-field {
+    border: 2px solid #049f5f;
+    border-radius: 4px;
+}
+
+.meal-notebook-page {
+    background-color: #e8f5e8;
+    color: #049f5f;
+    font-weight: bold;
+}
+
+/* Menu Meal Kanban Styles */
+.meal-kanban-card {
+    width: 300px;
+    margin: 5px;
+    cursor: pointer;
+    box-shadow: 2.5px 5px #888888;
+    background-color: #e8f5e8;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+.meal-kanban-card {
+    width: 340px;   /* card width */
+    height: auto;   /* auto or fixed height */
+}
+
+.meal-kanban-content {
+    padding: 15px;
+}
+
+.meal-kanban-title {
+    font-size: 14px;
+    color: #875A7B;
+}
+
+.meal-kanban-price {
+    float: right;
+    color: #875A7B;
+    font-weight: bold;
+}
+
+.meal-kanban-items {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.meal-kanban-button {
+    margin-top: 10px;
+}
+
+.meal-kanban-button .btn {
+    width: 100%;
+}

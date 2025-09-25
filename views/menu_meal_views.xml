@@ -6,7 +6,7 @@
         <field name="model">menu.meal</field>
         <field name="arch" type="xml">
             <form string="Menu Meal Package">
-                <sheet style="background-color: #e8f5e8; border: 2px solid #049f5f; border-radius: 8px;">
+                <sheet class="meal-form-sheet">
                     <div class="oe_button_box" name="button_box">
                         <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
                             <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
@@ -17,29 +17,29 @@
                             <field name="name" placeholder="Meal Package Name"/>
                         </h1>
                     </div>
-                    <group style="background-color: #e8f5e8; padding: 15px; border-radius: 8px; border: 2px solid #049f5f;">
+                    <group class="meal-form-group">
                         <group>
-                            <field name="meat_type" style="border: 2px solid #049f5f; border-radius: 4px;"/>
-                            <field name="total_meal_price" string="Total Meal Price" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                            <field name="meat_type" class="meal-form-field"/>
+                            <field name="total_meal_price" string="Total Meal Price" class="meal-form-field"/>
                         </group>
                     </group>
                     <notebook>
-                        <page string="Menu Selection" style="background-color: #e8f5e8; color: #049f5f; font-weight: bold;">
-                            <group style="background-color: #e8f5e8; padding: 15px; border-radius: 8px; border: 2px solid #049f5f;">
+                        <page string="Menu Selection" class="meal-notebook-page">
+                            <group class="meal-form-group">
                                 <group string="Main Course">
-                                    <field name="meat_dishes" string="Meat Dishes" widget="many2many_tags" domain="[('meat_type', '=', meat_type)]" invisible="not meat_type" style="border: 2px solid #049f5f; border-radius: 4px;"/>
-                                    <field name="rice_dish_ids" string="Rice (Biryani/Pulao)" widget="many2many_tags" domain="[('dish_category', '=', 'rice')]" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                                    <field name="meat_dishes" string="Meat Dishes" widget="many2many_tags" domain="[('meat_type', '=', meat_type)]" invisible="not meat_type" class="meal-form-field"/>
+                                    <field name="rice_dish_ids" string="Rice (Biryani/Pulao)" widget="many2many_tags" domain="[('dish_category', '=', 'rice')]" class="meal-form-field"/>
                                 </group>
                                 <group string="Sides Extras">
-                                    <field name="dessert_ids" string="Dessert (Kheer/Firni/Kulfa/Zarda)" widget="many2many_tags" domain="[('dish_category', '=', 'dessert')]" style="border: 2px solid #049f5f; border-radius: 4px;"/>
-                                    <field name="salad_ids" string="Salad (Fresh/Kachumar/Raita)" widget="many2many_tags" domain="[('dish_category', '=', 'salad')]" style="border: 2px solid #049f5f; border-radius: 4px;"/>
-                                    <field name="drink_ids" string="Drinks (Soft/Mineral Water)" widget="many2many_tags" domain="[('meal_type', '=', 'beverages')]" style="border: 2px solid #049f5f; border-radius: 4px;"/>
-                                    <field name="bread_ids" string="Bread (Live Roghani Naan)" widget="many2many_tags" domain="[('dish_category', '=', 'bread')]" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                                    <field name="dessert_ids" string="Dessert (Kheer/Firni/Kulfa/Zarda)" widget="many2many_tags" domain="[('dish_category', '=', 'dessert')]" class="meal-form-field"/>
+                                    <field name="salad_ids" string="Salad (Fresh/Kachumar/Raita)" widget="many2many_tags" domain="[('dish_category', '=', 'salad')]" class="meal-form-field"/>
+                                    <field name="drink_ids" string="Drinks (Soft/Mineral Water)" widget="many2many_tags" domain="[('meal_type', '=', 'beverages')]" class="meal-form-field"/>
+                                    <field name="bread_ids" string="Bread (Live Roghani Naan)" widget="many2many_tags" domain="[('dish_category', '=', 'bread')]" class="meal-form-field"/>
                                 </group>
                             </group>
                         </page>
-                        <page string="Description" style="background-color: #e8f5e8; color: #049f5f; font-weight: bold;">
-                            <field name="description" placeholder="Package description..." style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                        <page string="Description" class="meal-notebook-page">
+                            <field name="description" placeholder="Package description..." class="meal-form-field"/>
                         </page>
                     </notebook>
                 </sheet>
@@ -82,56 +82,41 @@
                 <field name="bread_ids"/>
                 <templates>
                     <t t-name="card">
-                        <div class="oe_kanban_card"
-                             style="width: 300px; margin: 5px; cursor: pointer; border: 3px solid #049f5f; background-color: #e8f5e8; position: relative; border-radius: 8px;">
-                            <div style="padding: 15px;">
-                                <strong style="font-size: 14px; color: #875A7B;">
+                        <div class="oe_kanban_card meal-kanban-card">
+                            <div class="meal-kanban-content">
+                                <strong class="meal-kanban-title">
                                     <field name="name"/>
                                 </strong>
                                 <br/>
                                 <span class="badge badge-secondary">
                                     <field name="meat_type"/>
                                 </span>
-                                <span style="float: right; color: #875A7B; font-weight: bold;">
+                                <span class="meal-kanban-price">
                                     <field name="total_meal_price"/>
                                 </span>
                                 <br/>
-                                <div style="margin-top: 10px; font-size: 12px;">
+                                <div class="meal-kanban-items">
                                     <t t-if="record.meat_dishes.raw_value">
-                                        <div>🍖
-                                            <field name="meat_dishes"/>
-                                        </div>
+                                        <div>🍖 <field name="meat_dishes"/></div>
                                     </t>
                                     <t t-if="record.rice_dish_ids.raw_value">
-                                        <div>🍚
-                                            <field name="rice_dish_ids"/>
-                                        </div>
+                                        <div>🍚 <field name="rice_dish_ids"/></div>
                                     </t>
                                     <t t-if="record.dessert_ids.raw_value">
-                                        <div>🍰
-                                            <field name="dessert_ids"/>
-                                        </div>
+                                        <div>🍰 <field name="dessert_ids"/></div>
                                     </t>
                                     <t t-if="record.salad_ids.raw_value">
-                                        <div>🥗
-                                            <field name="salad_ids"/>
-                                        </div>
+                                        <div>🥗 <field name="salad_ids"/></div>
                                     </t>
                                     <t t-if="record.drink_ids.raw_value">
-                                        <div>🥤
-                                            <field name="drink_ids"/>
-                                        </div>
+                                        <div>🥤 <field name="drink_ids"/></div>
                                     </t>
                                     <t t-if="record.bread_ids.raw_value">
-                                        <div>🍞
-                                            <field name="bread_ids"/>
-                                        </div>
+                                        <div>🍞 <field name="bread_ids"/></div>
                                     </t>
                                 </div>
-                                <div style="margin-top: 10px;">
-                                    <button name="action_edit_meal" type="object"
-                                            class="btn btn-sm btn-primary"
-                                            style="width: 100%;">
+                                <div class="meal-kanban-button">
+                                    <button name="action_edit_meal" type="object" class="btn btn-sm btn-primary">
                                         Edit Package
                                     </button>
                                 </div>
