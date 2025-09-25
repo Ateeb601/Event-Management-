@@ -23,6 +23,7 @@
     'assets': {
         'web.assets_backend': [
             'event_management/static/src/css/booking_form.css',
+            'event_management/static/src/css/hall.css',
             'event_management/static/src/js/booking_form.js',
             'event_management/static/src/js/meal_selection_widget.js',
             'event_management/static/src/xml/meal_selection_widget.xml',

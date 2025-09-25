@@ -5,17 +5,17 @@
         <field name="model">event.hall</field>
         <field name="arch" type="xml">
             <form>
-                <sheet style="background-color: #e8f5e8; border: 2px solid #049f5f; border-radius: 8px;">
+                <sheet class="hall-form-sheet">
                     <field name="image" widget="image" class="oe_avatar"/>
-                    <group style="background-color: #e8f5e8; padding: 15px; border-radius: 8px; border: 2px solid #049f5f;">
+                    <group class="hall-form-group">
                         <group>
-                            <field name="name" style="border: 2px solid #049f5f; border-radius: 4px;"/>
-                            <field name="capacity" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                            <field name="name" class="hall-form-field"/>
+                            <field name="capacity" class="hall-form-field"/>
                         </group>
                         <group>
-                            <field name="chairs" style="border: 2px solid #049f5f; border-radius: 4px;"/>
-                            <field name="tables" style="border: 2px solid #049f5f; border-radius: 4px;"/>
-                            <field name="facilities" style="border: 2px solid #049f5f; border-radius: 4px;"/>
+                            <field name="chairs" class="hall-form-field"/>
+                            <field name="tables" class="hall-form-field"/>
+                            <field name="facilities" class="hall-form-field"/>
                         </group>
                     </group>
                 </sheet>
@@ -37,50 +37,26 @@
                 <field name="image"/>
                 <templates>
                     <t t-name="card">
-                        <div class="oe_kanban_card"
-                             style="width: 300px; height: 420px; margin: 5px; cursor: pointer;
-                                border: 3px solid #049f5f; background-color: #e8f5e8;
-                                border-radius: 8px; display: flex; flex-direction: column;
-                                justify-content: space-between; position: relative;">
-
-                            <!-- Image section -->
-                            <div style="flex: 0 0 250px; overflow: hidden; border-bottom: 2px solid #049f5f;">
-                                <field name="image" widget="image" options="{'size': [295, 250]}"
-                                       style="width: 100%; height: 100%; object-fit: cover;"/>
+                        <div class="oe_kanban_card hall-kanban-card">
+                            <div class="hall-kanban-image">
+                                <field name="image" widget="image" options="{'size': [295, 250]}"/>
                             </div>
-
-                            <!-- Details section -->
-                            <div class="oe_kanban_details o_kanban_record_headings"
-                                 style="padding: 15px; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                                <div style="text-align: left; margin-top: auto;">
-                                    <strong>Hall Name :
-                                        <field name="name"/>
-                                    </strong>
+                            <div class="oe_kanban_details o_kanban_record_headings hall-kanban-details">
+                                <div class="hall-kanban-detail-item">
+                                    <strong>Hall Name : <field name="name"/></strong>
                                 </div>
-                                <div style="text-align: left; margin-top: auto;">
-                                    <strong>Capacity :
-                                        <field name="capacity"/>
-                                    </strong>
+                                <div class="hall-kanban-detail-item">
+                                    <strong>Capacity : <field name="capacity"/></strong>
                                 </div>
-
-                                <div style="text-align: left; margin-top: auto;">
-                                    <strong>Number of Chairs :
-                                        <field name="chairs"/>
-                                    </strong>
+                                <div class="hall-kanban-detail-item">
+                                    <strong>Number of Chairs : <field name="chairs"/></strong>
                                 </div>
-
-                                <div style="text-align: left; margin-top: auto;">
-                                    <strong>Number of Tables :
-                                        <field name="tables"/>
-                                    </strong>
+                                <div class="hall-kanban-detail-item">
+                                    <strong>Number of Tables : <field name="tables"/></strong>
                                 </div>
-
-                                <div style="text-align: left; margin-top: auto;">
-                                    <strong>Facilities :
-                                        <field name="facilities"/>
-                                    </strong>
+                                <div class="hall-kanban-detail-item">
+                                    <strong>Facilities : <field name="facilities"/></strong>
                                 </div>
-
                             </div>
                         </div>
                     </t>
